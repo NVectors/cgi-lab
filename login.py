@@ -1,31 +1,5 @@
 #!/usr/bin/env python3
-
 import os
-import json
-
-print("Content-Type: text/plain")
-print("")
-
-# Q1 Inspect all environment variables
-# os.environ returns a dictionary=> environment variables: value
-print(os.environ)
-
-# Q2 Serve the environment back as JSON
-print("Content-Type: application/json")
-print("")
-# Convert os.environ object into json string
-json_object = json.dumps(dict(os.environ), indent=1)
-print(json_object)
-
-# Q2 Return values of the query parameter
-param = "QUERY_STRING"
-print("%s: %s" % (param, os.environ[param]))
-
-# Q3 Return value of the user's browser
-param = "HTTP_USER_AGENT"
-print("%s: %s" % (param, os.environ[param]))
-
-####################################################################################################
 from templates import login_page, secret_page, after_login_incorrect
 import secret
 import cgi, cgitb
@@ -83,4 +57,3 @@ elif (usernameEntered == secret.username and passwordEntered == secret.password)
     print(secret_page(usernameEntered, passwordEntered))
 else:
     print(after_login_incorrect())
-
